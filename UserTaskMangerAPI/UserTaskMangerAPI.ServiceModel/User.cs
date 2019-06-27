@@ -8,7 +8,7 @@ using Shared.DTO;
 
 namespace UserTaskMangerAPI.ServiceModel
 {
-    [Route("/user/{id}")]
+    [Route("/user/{id}","GET")]
     public class GetUserById : IReturn<GetUserByIdResponse>
     {
         public int id { get; set; }

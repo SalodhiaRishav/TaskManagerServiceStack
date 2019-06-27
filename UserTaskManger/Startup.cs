@@ -21,7 +21,7 @@ using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using ServiceStack;
 
 using Funq;
-using UserTaskManger.ServiceInterface;
+using UserTaskManger.ServiceInterface.Services;
 
 namespace UserTaskManger
 {
@@ -81,7 +81,7 @@ namespace UserTaskManger
         /// Base constructor requires a Name and Assembly where web service implementation is located
         /// </summary>
         public AppHost()
-            : base("UserTaskManager", typeof(MyServices).Assembly) { }
+            : base("UserTaskManager", typeof(UserService).Assembly) { }
 
         /// <summary>
         /// Application specific configuration
