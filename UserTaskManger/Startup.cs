@@ -19,8 +19,9 @@ using DAL.Repository;
 using DAL;
 using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using ServiceStack;
-using UserTaskMangerAPI.ServiceInterface;
+
 using Funq;
+using UserTaskManger.ServiceInterface;
 
 namespace UserTaskManger
 {

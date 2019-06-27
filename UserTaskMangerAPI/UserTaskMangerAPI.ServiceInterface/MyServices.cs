@@ -1,13 +1,21 @@
 ﻿using ServiceStack;
 using UserTaskMangerAPI.ServiceModel;
+using BAL.Interfaces;
 
 namespace UserTaskMangerAPI.ServiceInterface
 {
+
     public class MyServices : Service
     {
-        public object Any(Hello request)
+        IUserBusinessLogic UserBusinessLogic;
+        public MyServices(IUserBusinessLogic userBusinessLogic)
         {
-            return new HelloResponse { Result = $"Hello, {request.Name}!" };
+            UserBusinessLogic = userBusinessLogic;
+        }
+        public object Get(GetUserById request)
+        {
+            
+            return new GetUserByIdResponse { Result = };
         }
     }
 }

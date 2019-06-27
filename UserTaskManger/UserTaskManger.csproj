@@ -26,8 +26,8 @@
     <ProjectReference Include="..\BAL\BAL.csproj" />
     <ProjectReference Include="..\DAL\DAL.csproj" />
     <ProjectReference Include="..\Shared\Shared.csproj" />
-    <ProjectReference Include="..\UserTaskMangerAPI\UserTaskMangerAPI.ServiceInterface\UserTaskMangerAPI.ServiceInterface.csproj" />
-    <ProjectReference Include="..\UserTaskMangerAPI\UserTaskMangerAPI.ServiceModel\UserTaskMangerAPI.ServiceModel.csproj" />
+    <ProjectReference Include="..\UserTaskManger.ServiceInterface\UserTaskManger.ServiceInterface.csproj" />
+    <ProjectReference Include="..\UserTaskManger.ServiceModel\UserTaskManger.ServiceModel.csproj" />
   </ItemGroup>
 
 </Project>

@@ -43,11 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hello.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Types\Task.cs" />
+    <Compile Include="Types\User.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Types\" />
+    <ProjectReference Include="..\..\Shared\Shared.csproj">
+      <Project>{d191679d-5e09-4fa0-a902-7ff11f9a9d80}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -54,14 +54,15 @@ namespace DAL.Repository
 
         public UserDTO GetById(int id)
         {
-            Domain.User user = this.DatabaseContext.Users
-                .Include(u=>u.Tasks)
-                .Where(uu=>uu.ID==id).ToList().First();
+            var users = this.DatabaseContext.Users
+                .Include(u => u.Tasks)
+                .Where(uu => uu.ID == id).ToList();
 
-            if (user==null)
+            if (users.Count==0)
             {
                 return null;
             }
+            var user = users.First();
             UserDTO userDTO = DatabaseAutomapperConfiguration.UserToUserDTO(user);
             return userDTO;
         }
