@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using BAL.Interfaces;
 using ServiceStack;
-using UserTaskManger.ServiceModel.RequestDTO;
-using UserTaskManger.ServiceModel.ResponseDTO;
+using UserTaskManger.ServiceModel.RequestDTO.UserRequestDTOs;
+using UserTaskManger.ServiceModel.ResponseDTO.UserResponseDTOs;
 using Shared.DTO;
 
 namespace UserTaskManger.ServiceInterface.Services
@@ -21,6 +19,12 @@ namespace UserTaskManger.ServiceInterface.Services
         {
             UserDTO user = UserBusinessLogic.GetById(request.id);
             return new GetUserByIdResponseDTO { Result = user };
+        }
+
+        public object Get(GetAllUsersRequestDTO request) 
+        {
+            List<UserDTO> users = UserBusinessLogic.GetAll();
+            return new GetAllUsersResponseDTO { Result = users };
         }
     }
 }

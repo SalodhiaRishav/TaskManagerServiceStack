@@ -1,22 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Shared.DTO;
+using Shared;
 
 namespace BAL.Interfaces
 {
-   public interface ITaskBusinessLogic
+    public interface ITaskBusinessLogic
     {
 
-        void Add(TaskDTO taskDTO);
+        MessageFormat<TaskDTO> Add(TaskDTO taskDTO);
 
-        TaskDTO GetById(int id);
+        MessageFormat<TaskDTO> GetById(int id);
 
-        List<TaskDTO> GetAll();
+        MessageFormat<List<TaskDTO>> GetAll();
 
-        void Delete(int id);
+        MessageFormat<TaskDTO> Delete(int id);
 
-        void Update(TaskDTO taskDTO);
+        MessageFormat<TaskDTO> Update(TaskDTO taskDTO);
 
     }
 }

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Shared.DTO;
 
 namespace BAL.Interfaces
 {
-   public interface IUserBusinessLogic 
+    public interface IUserBusinessLogic 
     {
         void Add(UserDTO userDTO);
 

@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Shared.DTO;
+using Shared;
 
 namespace DAL.Interfaces
 {
     public interface ITaskRepository
     {
-      void Add(TaskDTO taskDTO);
+      MessageFormat<TaskDTO> Add(TaskDTO taskDTO);
 
+      MessageFormat<TaskDTO> Delete(int id);
 
-      void Delete(int id);
+      MessageFormat<List<TaskDTO>> GetAll();
 
+      MessageFormat<TaskDTO> GetById(int id);
 
-       List<TaskDTO> GetAll();
-
-        TaskDTO GetById(int id);
-
-
-        void Update(TaskDTO taskDTO);
+      MessageFormat<TaskDTO> Update(TaskDTO taskDTO);
        
     }
 }

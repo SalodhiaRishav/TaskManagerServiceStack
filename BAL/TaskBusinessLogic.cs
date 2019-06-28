@@ -1,9 +1,9 @@
-﻿using System;
-using DAL.Repository;
-using Shared.DTO;
+﻿using Shared.DTO;
 using BAL.Interfaces;
 using DAL.Interfaces;
 using System.Collections.Generic;
+using System;
+using Shared;
 
 namespace BAL
 {
@@ -15,31 +15,66 @@ namespace BAL
             TaskRepository = taskRepository;
         }
 
-        public void Add(TaskDTO taskDTO)
+        public MessageFormat<TaskDTO> Add(TaskDTO taskDTO)
         {
-            this.TaskRepository.Add(taskDTO);
-            return;
+            try
+            {
+                MessageFormat<TaskDTO> result= this.TaskRepository.Add(taskDTO);
+                return result;
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+           
         }
 
-        public List<TaskDTO> GetAll()
+        public MessageFormat<List<TaskDTO>> GetAll()
         {
-            return this.TaskRepository.GetAll();
+            try
+            {
+                return this.TaskRepository.GetAll();
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
         }
 
-        public TaskDTO GetById(int id)
+        public MessageFormat<TaskDTO> GetById(int id)
         {
-            return this.TaskRepository.GetById(id);
+            try
+            {
+                return this.TaskRepository.GetById(id);
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
         }
 
-        public void Delete(int id)
+        public MessageFormat<TaskDTO> Delete(int id)
         {
-            this.TaskRepository.Delete(id);
+            try
+            {
+                return this.TaskRepository.Delete(id);
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
         }
 
-        public void Update(TaskDTO taskDTO)
+        public MessageFormat<TaskDTO> Update(TaskDTO taskDTO)
         {
-
-            this.TaskRepository.Update(taskDTO);
+            try
+            {
+                return this.TaskRepository.Update(taskDTO);
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
         }
     }
 }

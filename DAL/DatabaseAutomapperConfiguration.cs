@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using AutoMapper;
 using DAL.Domain;
 using Shared.DTO;
@@ -8,7 +6,7 @@ using DAL.Interfaces;
 
 namespace DAL
 {
-   public class DatabaseAutomapperConfiguration:IDatabaseAutomapperConfiguration
+    public class DatabaseAutomapperConfiguration:IDatabaseAutomapperConfiguration
     {
         IMapper Mapper;
 

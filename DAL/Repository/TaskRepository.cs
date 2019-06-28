@@ -1,12 +1,10 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Text;
 using DAL.Database;
 using Shared.DTO;
-using DAL.Domain;
 using DAL.Interfaces;
 using System.Linq;
+using Shared;
 
 namespace DAL.Repository
 {
@@ -17,61 +15,124 @@ namespace DAL.Repository
         public TaskRepository(DatabaseContext databaseContext,IDatabaseAutomapperConfiguration databaseAutomapperConfiguration)
         {
             DatabaseContext = databaseContext;
-            //DatabaseAutomapperConfiguration = new DatabaseAutomapperConfiguration();
             DatabaseAutomapperConfiguration = databaseAutomapperConfiguration;
         }
 
-        public void Add(TaskDTO taskDTO)
+        public MessageFormat<TaskDTO> Add(TaskDTO taskDTO)
         {
-            Domain.Task task = DatabaseAutomapperConfiguration.TaskDTOToTask(taskDTO);
-            task.CreatedOn = DateTime.Now;
-            task.ModifiedOn = DateTime.Now;
-
-            DatabaseContext.Tasks.Add(task);
-            DatabaseContext.SaveChanges();
-            return;
-            
-        }
-
-        public void Delete(int id)
-        {
-            Domain.Task task = this.DatabaseContext.Tasks.Find(id);
-            if (task == null)
-            {
-                return;
-            }         
-            DatabaseContext.Tasks.Remove(task);
-            DatabaseContext.SaveChanges();
-            return;
-        }
-
-
-        public TaskDTO GetById(int id)
-        {
-            Domain.Task task = this.DatabaseContext.Tasks.Find(id);
-            if(task==null)
-            {
-                return null;
-            }
-            TaskDTO taskDTO = DatabaseAutomapperConfiguration.TaskToTaskDTO(task);
-            return taskDTO;
-        }
-
-        public void Update(TaskDTO taskDTO)
-        {
-          
-           
+            taskDTO.CreatedOn = DateTime.Now;
             taskDTO.ModifiedOn = DateTime.Now;
             Domain.Task task = DatabaseAutomapperConfiguration.TaskDTOToTask(taskDTO);
-            DatabaseContext.Tasks.Update(task);
-            DatabaseContext.SaveChanges();
-            return;
+            DatabaseContext.Tasks.Add(task);
+            try
+            {
+                DatabaseContext.SaveChanges();
+                taskDTO.ID = task.ID;
+                MessageFormat<TaskDTO> result = new MessageFormat<TaskDTO>();
+                result.Data = taskDTO;
+                result.Message = "Added successfully";
+                result.Success = true;
+                return result;
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
         }
 
-        public List<TaskDTO> GetAll()
+        public MessageFormat<TaskDTO> Delete(int id)
         {
-            List<Domain.Task> taskList = this.DatabaseContext.Tasks.ToList();
-            return this.DatabaseAutomapperConfiguration.TaskListToTaskDTOList(taskList);
+            MessageFormat<TaskDTO> result = new MessageFormat<TaskDTO>();
+            try
+            {
+                Domain.Task task = this.DatabaseContext.Tasks.Find(id);
+                if (task == null)
+                {
+                    result.Message = "No task found with this id";
+                    result.Success = false;
+                    return result;
+                }
+                DatabaseContext.Tasks.Remove(task);
+                DatabaseContext.SaveChanges();
+                result.Message = "Deleted Successfully";
+                result.Success = true;
+                return result;
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
+
+
+        public MessageFormat<TaskDTO> GetById(int id)
+        {
+            MessageFormat<TaskDTO> result = new MessageFormat<TaskDTO>();
+            try
+            {
+                Domain.Task task = this.DatabaseContext.Tasks.Find(id);
+                if (task == null)
+                {
+                    result.Message = "No task found with this id";
+                    result.Success = false;
+                    return result;
+                }
+                TaskDTO taskDTO = DatabaseAutomapperConfiguration.TaskToTaskDTO(task);
+                result.Message = "Retrieved Successfully";
+                result.Data = taskDTO;
+                result.Success = true;
+                return result;
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
+
+        public MessageFormat<TaskDTO> Update(TaskDTO taskDTO)
+        {
+            MessageFormat<TaskDTO> result = new MessageFormat<TaskDTO>();
+            taskDTO.ModifiedOn = DateTime.Now;
+            Domain.Task task = DatabaseAutomapperConfiguration.TaskDTOToTask(taskDTO);
+            try
+            {
+                DatabaseContext.Tasks.Update(task);
+                DatabaseContext.SaveChanges();
+                result.Message = "Updated Successfully";
+                result.Data = taskDTO;
+                result.Success = true;
+                return result;
+
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+          
+        }
+
+        public MessageFormat<List<TaskDTO>> GetAll()
+        {
+            MessageFormat<List<TaskDTO>> result = new MessageFormat<List<TaskDTO>>();           
+            try
+            {
+                List<Domain.Task> taskList = this.DatabaseContext.Tasks.ToList();
+                if(taskList.Count==0)
+                {                               
+                    result.Message = "Empty List";                 
+                    result.Success = false;
+                    return result;
+                }
+                List<TaskDTO> taskDTOList=this.DatabaseAutomapperConfiguration.TaskListToTaskDTOList(taskList);
+                result.Message = "Retrieved Successfully";
+                result.Success = true;
+                result.Data = taskDTOList;
+                return result;
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
         }
     }
 }

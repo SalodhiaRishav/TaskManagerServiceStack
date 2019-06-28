@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using DAL.Interfaces;
 using Shared.DTO;
 using BAL.Interfaces;
 
 namespace BAL
 {
-   public class UserBusinessLogic : IUserBusinessLogic
+    public class UserBusinessLogic : IUserBusinessLogic
     {
         IUserRepository UserRepository;
         public UserBusinessLogic(IUserRepository userRepository)
@@ -38,7 +36,6 @@ namespace BAL
 
         public void Update(UserDTO userDTO)
         {
-
             this.UserRepository.Update(userDTO);
         }
     }

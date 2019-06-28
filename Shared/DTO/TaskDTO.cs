@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Shared.DTO
 {
-   public class TaskDTO
+    public class TaskDTO
     {
         public int ID { get; set; }
 
