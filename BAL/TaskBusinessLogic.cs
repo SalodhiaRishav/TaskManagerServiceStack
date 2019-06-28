@@ -9,7 +9,7 @@ namespace BAL
 {
     public class TaskBusinessLogic :ITaskBusinessLogic
     {
-        ITaskRepository TaskRepository;
+        readonly ITaskRepository TaskRepository;
         public TaskBusinessLogic(ITaskRepository taskRepository)
         {
             TaskRepository = taskRepository;
@@ -19,8 +19,7 @@ namespace BAL
         {
             try
             {
-                MessageFormat<TaskDTO> result= this.TaskRepository.Add(taskDTO);
-                return result;
+                return this.TaskRepository.Add(taskDTO);                
             }
             catch(Exception exception)
             {

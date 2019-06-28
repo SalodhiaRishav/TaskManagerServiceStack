@@ -2,41 +2,81 @@
 using DAL.Interfaces;
 using Shared.DTO;
 using BAL.Interfaces;
+using System;
+using Shared;
 
 namespace BAL
 {
     public class UserBusinessLogic : IUserBusinessLogic
     {
-        IUserRepository UserRepository;
+        readonly IUserRepository UserRepository;
         public UserBusinessLogic(IUserRepository userRepository)
         {
             UserRepository = userRepository;
         }
 
-        public void Add(UserDTO userDTO)
+        public MessageFormat<UserDTO> Add(UserDTO userDTO)
         {
-            this.UserRepository.Add(userDTO);
-            return;
+            try
+            {
+                return this.UserRepository.Add(userDTO);
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
         }
 
-        public List<UserDTO> GetAll()
+        public MessageFormat<List<UserDTO>> GetAll()
         {
-           return this.UserRepository.GetAll();
+            try
+            {
+                return this.UserRepository.GetAll();
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+            
         }
 
-        public UserDTO GetById(int id)
+        public MessageFormat<UserDTO> GetById(int id)
         {
-            return this.UserRepository.GetById(id);
+            try
+            {
+                return this.UserRepository.GetById(id);
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+            
         }
 
-        public void Delete(int id)
+        public MessageFormat<UserDTO> Delete(int id)
         {
-            this.UserRepository.Delete(id);
+            try
+            {
+                return this.UserRepository.Delete(id);
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+           
         }
 
-        public void Update(UserDTO userDTO)
+        public MessageFormat<UserDTO> Update(UserDTO userDTO)
         {
-            this.UserRepository.Update(userDTO);
+            try
+            {
+                return this.UserRepository.Update(userDTO);
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+          
         }
     }
 }

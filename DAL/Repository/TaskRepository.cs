@@ -20,6 +20,7 @@ namespace DAL.Repository
 
         public MessageFormat<TaskDTO> Add(TaskDTO taskDTO)
         {
+            MessageFormat<TaskDTO> result = new MessageFormat<TaskDTO>();
             taskDTO.CreatedOn = DateTime.Now;
             taskDTO.ModifiedOn = DateTime.Now;
             Domain.Task task = DatabaseAutomapperConfiguration.TaskDTOToTask(taskDTO);
@@ -28,7 +29,6 @@ namespace DAL.Repository
             {
                 DatabaseContext.SaveChanges();
                 taskDTO.ID = task.ID;
-                MessageFormat<TaskDTO> result = new MessageFormat<TaskDTO>();
                 result.Data = taskDTO;
                 result.Message = "Added successfully";
                 result.Success = true;

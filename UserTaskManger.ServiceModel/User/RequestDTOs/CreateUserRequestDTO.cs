@@ -1,7 +1,7 @@
 ﻿using ServiceStack;
 using UserTaskManger.ServiceModel.ResponseDTO.UserResponseDTOs;
 
-namespace UserTaskManger.ServiceModel.RequestDTO.UserRequestDTOs
+namespace UserTaskManger.ServiceModel.User.RequestDTOs
 {
     [Route("/user", "GET")]
     public class CreateUserRequestDTO : IReturn<CreateUserResponseDTO>

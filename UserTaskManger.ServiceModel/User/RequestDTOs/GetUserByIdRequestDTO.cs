@@ -3,9 +3,9 @@ using UserTaskManger.ServiceModel.ResponseDTO.UserResponseDTOs;
 
 namespace UserTaskManger.ServiceModel.RequestDTO.UserRequestDTOs
 {
-    [Route("/user/{id}","GET")]
+    [Route("/user/{Id}","GET")]
     public class GetUserByIdRequestDTO : IReturn<GetUserByIdResponseDTO>
     {
-        public int id { get; set; }
+        public int Id { get; set; }
     }
 }

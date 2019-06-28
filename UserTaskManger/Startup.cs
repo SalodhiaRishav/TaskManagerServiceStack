@@ -69,7 +69,6 @@ namespace UserTaskManger
 
     public class AppHost : AppHostBase
     {
-        private static Assembly[] assembliesWithServices= { typeof(UserService).Assembly, typeof(TaskService).Assembly };
 
         /// <summary>
         /// Base constructor requires a Name and Assembly where web service implementation is located

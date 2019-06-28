@@ -17,7 +17,7 @@ namespace UserTaskManger.ServiceInterface.Services
 
         public object Get(GetUserByIdRequestDTO request)
         {
-            UserDTO user = UserBusinessLogic.GetById(request.id);
+            UserDTO user = UserBusinessLogic.GetById(request.Id);
             return new GetUserByIdResponseDTO { Result = user };
         }
 

@@ -1,20 +1,19 @@
 ﻿using System.Collections.Generic;
 using Shared.DTO;
+using Shared;
 
 namespace DAL.Interfaces
 {
     public interface IUserRepository
     {
-        void Add(UserDTO userDTO);
+        MessageFormat<UserDTO> Add(UserDTO userDTO);
 
+        MessageFormat<UserDTO> Delete(int id);
 
-        void Delete(int id);
+        MessageFormat<List<UserDTO>> GetAll();
 
-        List<UserDTO> GetAll();
+        MessageFormat<UserDTO> GetById(int id);
 
-        UserDTO GetById(int id);
-
-
-        void Update(UserDTO userDTO);
+        MessageFormat<UserDTO> Update(UserDTO userDTO);
     }
 }
