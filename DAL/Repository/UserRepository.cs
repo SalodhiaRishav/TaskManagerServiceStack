@@ -29,13 +29,27 @@ namespace DAL.Repository
             MessageFormat<UserDTO> result = new MessageFormat<UserDTO>();
             try
             {
-               User tempuser= DatabaseContext.Users.Find(userDTO.Email);
-                if(tempuser!=null)
+                var userList = DatabaseContext.Users.ToList();
+                if(userList.Count!=0)
                 {
-                    result.Message = "Email already exists";
-                    result.Success = false;
-                    return result;
-                }
+                    var tempuser=userList.Find(fuser => fuser.Email == user.Email);
+                    if (tempuser != null)
+                    {
+                        result.Message = "Email already exists";
+                        result.Success = false;
+                        return result;
+                    }
+                    else
+                    {
+                        DatabaseContext.Users.Add(user);
+                        DatabaseContext.SaveChanges();
+                        userDTO.ID = user.ID;
+                        result.Data = userDTO;
+                        result.Message = "Added successfully";
+                        result.Success = true;
+                        return result;
+                    }
+                }               
                 else
                 {
                     DatabaseContext.Users.Add(user);

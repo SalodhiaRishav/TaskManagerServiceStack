@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using Shared;
 using Shared.DTO;
 
-namespace UserTaskManger.ServiceModel.ResponseDTO.UserResponseDTOs
+namespace UserTaskManger.ServiceModel.User.ResponseDTOs
 {
     public class GetAllUsersResponseDTO
     {
-        public List<UserDTO> Result { get; set; }
+        public MessageFormat<List<UserDTO>> Result { get; set; }
     }
 }

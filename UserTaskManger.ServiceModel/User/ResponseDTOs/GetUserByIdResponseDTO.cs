@@ -1,9 +1,10 @@
-﻿using Shared.DTO;
+﻿using Shared;
+using Shared.DTO;
 
-namespace UserTaskManger.ServiceModel.ResponseDTO.UserResponseDTOs
+namespace UserTaskManger.ServiceModel.User.ResponseDTOs
 {
     public class GetUserByIdResponseDTO
     {
-        public UserDTO Result { get; set; }
+        public MessageFormat<UserDTO> Result { get; set; }
     }
 }
