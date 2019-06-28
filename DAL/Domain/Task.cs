@@ -9,9 +9,6 @@ namespace DAL.Domain
         public int ID { get; set; }
 
         [Required]
-        public string TaskDomain { get; set; }
-
-        [Required]
         public int TimeSpent { get; set; }
 
         [Required]
@@ -32,6 +29,10 @@ namespace DAL.Domain
         public int UserID { get; set; }
 
         public User User { get; set; }
+
+        public int TaskCategoryID { get; set; }
+
+        public TaskCategory TaskCategory { get; set; }
 
     }
 }

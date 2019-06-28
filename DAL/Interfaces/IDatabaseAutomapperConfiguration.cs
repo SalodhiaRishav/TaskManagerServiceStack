@@ -26,6 +26,15 @@ namespace DAL.Interfaces
 
         List<TaskDTO> TaskListToTaskDTOList(List<Task> tasks);
 
+        TaskCategoryDTO TaskCategoryToTaskCategoryDTO(TaskCategory taskCategory);
+
+        TaskCategory TaskCategoryDTOToTaskCategory(TaskCategoryDTO taskCategoryDTO);
+
+        List<TaskCategory> TaskCategoryDTOListToTaskCategoryList(List<TaskCategoryDTO> taskCategoryDTOList);
+
+        List<TaskCategoryDTO> TaskCategoryListToTaskCategoryDTOList(List<TaskCategory> taskCategoryList);
+        
+
 
 
 

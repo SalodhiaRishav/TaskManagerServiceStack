@@ -31,10 +31,9 @@ namespace DAL.Migrations
 
                     b.Property<DateTime>("ModifiedOn");
 
-                    b.Property<DateTime>("TaskDate");
+                    b.Property<int>("TaskCategoryID");
 
-                    b.Property<string>("TaskDomain")
-                        .IsRequired();
+                    b.Property<DateTime>("TaskDate");
 
                     b.Property<int>("TimeSpent");
 
@@ -45,9 +44,28 @@ namespace DAL.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("TaskCategoryID");
+
                     b.HasIndex("UserID");
 
                     b.ToTable("Tasks");
+                });
+
+            modelBuilder.Entity("DAL.Domain.TaskCategory", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CategoryName");
+
+                    b.Property<DateTime>("CreatedOn");
+
+                    b.Property<DateTime>("ModifiedOn");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("TaskCategories");
                 });
 
             modelBuilder.Entity("DAL.Domain.User", b =>
@@ -79,6 +97,11 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("DAL.Domain.Task", b =>
                 {
+                    b.HasOne("DAL.Domain.TaskCategory", "TaskCategory")
+                        .WithMany()
+                        .HasForeignKey("TaskCategoryID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("DAL.Domain.User", "User")
                         .WithMany("Tasks")
                         .HasForeignKey("UserID")

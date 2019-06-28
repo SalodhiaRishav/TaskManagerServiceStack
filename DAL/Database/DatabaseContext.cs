@@ -13,6 +13,7 @@ namespace DAL.Database
 
             
             public DbSet<User> Users { get; set; }
+            public DbSet<TaskCategory> TaskCategories { get; set; }
             public DbSet<Task> Tasks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

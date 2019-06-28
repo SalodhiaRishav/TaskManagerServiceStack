@@ -3,7 +3,9 @@ using BAL.Interfaces;
 using DAL.Interfaces;
 using System.Collections.Generic;
 using System;
+using BAL.Validators;
 using Shared;
+using FluentValidation.Results;
 
 namespace BAL
 {
@@ -19,6 +21,9 @@ namespace BAL
         {
             try
             {
+                TaskValidator taskValidator = new TaskValidator();
+                ValidationResult result = taskValidator.Validate(taskDTO);
+
                 return this.TaskRepository.Add(taskDTO);                
             }
             catch(Exception exception)
