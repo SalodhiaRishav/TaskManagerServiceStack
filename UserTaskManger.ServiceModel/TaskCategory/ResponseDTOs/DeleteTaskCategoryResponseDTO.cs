@@ -4,10 +4,10 @@ using System.Text;
 using Shared;
 using Shared.DTO;
 
-namespace UserTaskManger.ServiceModel.Task.ResponseDTOs
+namespace UserTaskManger.ServiceModel.TaskCategory.ResponseDTOs
 {
     public class DeleteTaskCategoryResponseDTO
     {
-        public MessageFormat<TaskDTO> Result { get; set; }
+        public MessageFormat<TaskCategoryDTO> Result { get; set; }
     }
 }

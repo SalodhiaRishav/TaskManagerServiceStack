@@ -4,10 +4,10 @@ using System.Text;
 using Shared;
 using Shared.DTO;
 
-namespace UserTaskManger.ServiceModel.Task.ResponseDTOs
+namespace UserTaskManger.ServiceModel.TaskCategory.ResponseDTOs
 {
     public class GetAllTaskCategoriesResponseDTO
     {
-        public MessageFormat<List<TaskDTO>> Result { get; set; }
+        public MessageFormat<List<TaskCategoryDTO>> Result { get; set; }
     }
 }

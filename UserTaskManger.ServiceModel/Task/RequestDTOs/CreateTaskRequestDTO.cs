@@ -8,7 +8,7 @@ using Shared.DTO;
 namespace UserTaskManger.ServiceModel.Task.RequestDTOs
 {
     [Route("/task", "POST")]
-    public class CreateTaskRequestDTO : IReturn<CreateTaskRequestDTO>
+    public class CreateTaskRequestDTO : IReturn<CreateTaskResponseDTO>
     {
        public TaskDTO TaskDTO { get; set; }
     }

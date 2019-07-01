@@ -89,7 +89,7 @@ namespace DAL.Repository
             }
         }
 
-        public MessageFormat<TaskCategoryDTO> GetById(TaskCategoryDTO id)
+        public MessageFormat<TaskCategoryDTO> GetById(int id)
         {
             MessageFormat<TaskCategoryDTO> result = new MessageFormat<TaskCategoryDTO>();
             try
@@ -133,5 +133,7 @@ namespace DAL.Repository
                 throw exception;
             }
         }
+
+        
     }
 }

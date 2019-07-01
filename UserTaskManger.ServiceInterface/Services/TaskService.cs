@@ -49,7 +49,7 @@ namespace UserTaskManger.ServiceInterface.Services
             try
             {
                 MessageFormat<List<TaskDTO>> result = this.TaskBusinessLogic.GetAll();
-                return new GetAllTasksResponseDTO { Result = result };
+                return new GetAllTaskCategoriesResponseDTO { Result = result };
             }
             catch(Exception exception)
             {
@@ -62,7 +62,7 @@ namespace UserTaskManger.ServiceInterface.Services
             try
             {
                 MessageFormat<TaskDTO> result = this.TaskBusinessLogic.GetById(getTaskByIdRequestDTO.Id);
-                return new GetTaskByIdResponseDTO { Result = result };
+                return new GetTaskCategoryByIdResponseDTO { Result = result };
             }
             catch(Exception exception)
             {

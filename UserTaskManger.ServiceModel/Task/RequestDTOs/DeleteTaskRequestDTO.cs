@@ -7,7 +7,7 @@ using UserTaskManger.ServiceModel.Task.ResponseDTOs;
 namespace UserTaskManger.ServiceModel.Task.RequestDTOs
 {
     [Route("/task/{Id}", "DELETE")]
-    public class DeleteTaskRequestDTO : IReturn<DeleteTaskResponseDTO>
+    public class DeleteTaskRequestDTO : IReturn<DeleteTaskCategoryResponseDTO>
     {
         public int Id { get; set; }
     }
