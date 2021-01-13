@@ -20,7 +20,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
-    <PackageReference Include="ServiceStack" Version="5.5.0" />
+    <PackageReference Include="ServiceStack" Version="5.9.2" />
   </ItemGroup>
 
   <ItemGroup>
